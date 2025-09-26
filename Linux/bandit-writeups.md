@@ -59,3 +59,37 @@ Password found: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 - **Command used:** grep millionth data.txt
 - **Learning**: Using grep to search for specific text patterns in files and extract adjacent data
 Password found: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+## Level 8 to 9
+- **Task:**  The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+- **Command used:** sort data.txt | uniq -u
+- **Learning**: Using sort and uniq commands together with pipes to find unique lines in a file
+Password found: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+## Level 9 to 10
+- **Task:**  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+- **Command used:** strings data.txt | grep "=="
+- **Learning**: Using strings to extract text from binary files and grep with pattern matching
+Password found: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+## Level 10 to 11
+- **Task:**  The password for the next level is stored in the file data.txt, which contains base64 encoded data
+- **Command used:** base64 -d data.txt
+- **Learning**: base64 -d to decode base64 encoded data and extract hidden information
+Password found: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+## Level 11 to 12
+- **Task:**  The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+- **Command used:** cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+- **Learning**: Using tr command for character translation and understanding ROT13 cipher
+Password found: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+## Level 12 to 13
+- **Task:**  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+- **Command used:** - mktemp -d (create temp directory)
+                    - xxd -r data.txt > file (reverse hexdump)
+                    - Multiple decompression cycles:
+                    - gzip -d, bzip2 -d, tar xf
+                    - Repeated file command to identify next compression type
+- **Learning**: Working with hexdumps, multiple compression formats, iterative decompression, and temporary directories
+Password found: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
