@@ -117,3 +117,28 @@ Password found: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
 - **Command used:** - nmap, openssl s_client -connect localhost:31790 -quiet
 - **Learning**: Port scanning, SSL service identification, private key authentication
 Password found: EReVavePLFHtFlFsjn3hyzMlvSuSAcRD
+
+## Level 17 to 18
+- **Task:**  There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+- **Command used:** - diff passwords.old passwords.new
+- **Learning**: Using diff to compare files and interpret the output ( < for first file, > for second file)
+Password found: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+
+## Level 18 to 19
+- **Task:**  The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
+- **Command used:** - ssh bandit18@bandit.labs.overthewire.org -p 2220 "cat readme"
+- **Learning**: Bypassing shell initialization by passing commands directly to SSH
+Password found: cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+
+## Level 19 to 20
+- **Task:**  To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
+- **Command used:** - ./bandit20-do cat /etc/bandit_pass/bandit20
+- **Learning**: Using setuid binaries for privilege escalation to access restricted files
+Password found: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+
+## Level 20 to 21
+- **Task:**  There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+- **Command used:** - echo "bandit20-password" | nc -l -p 1234 (set up listener)
+                    - ./suconnect 1234 (connect to listener in another terminal)
+- **Learning**: Network communication via localhost, using netcat as a simple server
+Password found: EeoULMCra2q0dSkYj561DX7s1CpBuOBt
