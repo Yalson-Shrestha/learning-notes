@@ -93,3 +93,27 @@ Password found: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
                     - Repeated file command to identify next compression type
 - **Learning**: Working with hexdumps, multiple compression formats, iterative decompression, and temporary directories
 Password found: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+
+## Level 13 to 14
+- **Task:**  The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+- **Command used:** - ssh -i sshkey.private bandit14@localhost -p 2220
+- **Learning**: Using SSH keys for authentication instead of passwords, accessing restricted files
+Password found: MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+
+## Level 14 to 15
+- **Task:**  The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+- **Command used:** - telnet localhost 30000 then pasted bandit14's password
+- **Learning**: Telnet, Network communication with services on specific ports
+Password found: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+## Level 15 to 16
+- **Task:**  The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL/TLS encryption.
+- **Command used:** - openssl s_client -connect localhost:30001
+- **Learning**: Using SSL/TLS encrypted connections with openssl s_client
+Password found: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+
+## Level 16 to 17
+- **Task:**  The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL/TLS and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+- **Command used:** - nmap, openssl s_client -connect localhost:31790 -quiet
+- **Learning**: Port scanning, SSL service identification, private key authentication
+Password found: EReVavePLFHtFlFsjn3hyzMlvSuSAcRD
