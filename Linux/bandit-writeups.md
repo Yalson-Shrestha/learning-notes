@@ -204,8 +204,29 @@ Password found: Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN
 - **Learning**: Examining git history, viewing commit differences, finding removed secrets
 Password found: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7
 
-## Level 28 to 29
+## Level 29 to 30
 - **Task:**  Clone git repository and find password in alternate branch
 - **Command used:** - git clone, git branch -a, git checkout dev, cat README.md
 - **Learning**: Exploring multiple git branches, checking out different branches to find hidden content
 Password found: qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL
+
+## Level 30 to 31
+- **Task:**  Clone git repository and find password in a git tag
+- **Command used:** - git tag, git show secret
+- **Learning**: Git tags as storage mechanism for hidden data, examining tag contents
+Password found: fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+
+## Level 31 to 32
+- **Task:**  Push a specific file to the remote repository, bypassing .gitignore
+- **Command used:** - echo 'May I come in?' > key.txt
+                    - git add -f key.txt (force add to bypass .gitignore)
+                    - git commit -m "Add key.txt"
+                    - git push origin master
+- **Learning**: Bypassing .gitignore with git add -f, git push workflow, pre-receive hooks
+Password found: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K
+
+## Level 32 to 33
+- **Task:**  Escape from the uppercase shell restriction
+- **Command used:** - $0 or other shell escape methods
+- **Learning**: Shell escaping, uppercase command restrictions, shell builtins
+Password found: tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0
