@@ -142,3 +142,26 @@ Password found: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
                     - ./suconnect 1234 (connect to listener in another terminal)
 - **Learning**: Network communication via localhost, using netcat as a simple server
 Password found: EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+
+## Level 21 to 22
+- **Task:**  A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+- **Command used:** - ls /etc/cron.d/,
+                    -  cat cronjob_bandit22,
+                    -  cat /usr/bin/cronjob_bandit22.sh
+- **Learning**: Investigating cron jobs and understanding automated script execution
+Password found: tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+
+## Level 22 to 23
+- **Task:**  A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+- **Command used:** - cat /usr/bin/cronjob_bandit23.sh,
+                    - echo "I am user bandit23" | md5sum | cut -d ' ' -f 1 (calculated the target filename),
+                    - cat /tmp/[md5-hash] (read the password file)
+- **Learning**: Investigating cron jobs and understanding automated script execution
+Password found: 0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
+
+## Level 23 to 24
+- **Task:**  A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+- **Command used:** - Created script in /tmp that copies /etc/bandit_pass/bandit24 to a readable location
+                    - Copied script to /var/spool/bandit24/foo/ where cron job executes it
+- **Learning**: Writing shell scripts, understanding cron job execution, file permissions, and privilege escalation through script execution
+Password found: gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
