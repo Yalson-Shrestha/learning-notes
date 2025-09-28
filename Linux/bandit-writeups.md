@@ -165,3 +165,47 @@ Password found: 0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
                     - Copied script to /var/spool/bandit24/foo/ where cron job executes it
 - **Learning**: Writing shell scripts, understanding cron job execution, file permissions, and privilege escalation through script execution
 Password found: gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
+
+## Level 24 to 25
+- **Task:**  A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+- **Command used:** - Created brute force script with for pin in {0000..9999} and nc localhost 30002
+- **Learning**: Basic brute forcing, generating number sequences, automation with bash scripts
+Password found: iCi86ttT4KSNe1armKiwbQNmB3YJP3q4
+
+## Level 25 to 26
+- **Task:**  Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
+- **Command used:** - cat /etc/passwd | grep bandit26
+                    - cat /usr/bin/showtext
+                    - ssh bandit26@localhost -p 2220 -i bandit26.sshkey (with small terminal window)
+                    - Press 'v' in more to enter vi
+                    - In vi: :set shell=/bin/bash
+                    - :shell
+                    - cat /etc/bandit_pass/bandit26
+- **Learning**: How restricted shells work, Exploiting pager programs (more) and editors (vi) for privilege escalation, The importance of understanding program behavior in different environment
+Password found: s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ
+
+## Level 26 to 27
+- **Task:**  Good job getting a shell! Now hurry and grab the password for bandit27!
+- **Command used:** - ./bandit27-do cat /etc/bandit_pass/bandit27
+- **Learning**: Escaping restricted shells, exploiting more and vim to get system access, using setuid binaries
+Password found: upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB
+
+## Level 27 to 28
+- **Task:**  There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo via the port 2220. The password for the user bandit27-git is the same as for the user bandit27. Clone the repository and find the password for the next level.
+- **Command used:** - git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo
+                    - cd repo
+                    - cat README
+- **Learning**: Working with git repositories over SSH, basic git commands
+Password found: Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN
+
+## Level 28 to 29
+- **Task:**  Clone git repository and find password (in commit history)
+- **Command used:** - git clone, git log, git show, git log -p
+- **Learning**: Examining git history, viewing commit differences, finding removed secrets
+Password found: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7
+
+## Level 28 to 29
+- **Task:**  Clone git repository and find password in alternate branch
+- **Command used:** - git clone, git branch -a, git checkout dev, cat README.md
+- **Learning**: Exploring multiple git branches, checking out different branches to find hidden content
+Password found: qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL
