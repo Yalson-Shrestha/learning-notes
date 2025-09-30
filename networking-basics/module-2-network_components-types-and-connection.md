@@ -1,3 +1,7 @@
+
+# 📘 Module 2: Network Components, Types and Connections
+
+
 # 📘 Module 2.1: ClientS and Servers
 
 ## 📌 Key Concepts
